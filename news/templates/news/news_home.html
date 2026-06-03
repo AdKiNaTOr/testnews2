@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Новости на сайте{% endblock %}
+
+{% block content %}
+<div class="features">
+    <h1>Новости на сайте</h1>
+        {% if news %}
+            {% for el in news %}
+                <div class="alert alert-warning">
+                    <details>
+                        <summary><h3>{{ el.title }}</h3></summary>
+                        <p><h4>{{ el.anons }}</h4></p>
+                        <a href="{% url 'news_detail' el.id%}" class="btn btn-warning">Читать дитальнее</a>
+                    </details>
+                </div>
+            {% endfor %}
+
+        {% else %}
+            <p class="text-danger">
+                ERROR 001: OUT OF NEWS, PLS UPDATE PAGE OR SEND MAIL TO <a href="mailto:arslannormuminov@gmail.com">arslannormuminov@gmail.com</a>
+            </p>
+        {% endif %}
+</div>
+{% endblock %}
